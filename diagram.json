@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "author": "Fahmi Agung Tajul Abidin",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -134.1, "left": -216.6, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -147.2,
+      "left": -80.8,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 44.4, "left": 138.2, "attrs": { "color": "red" } },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 221, "left": 134.4, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:SDA", "esp:14", "green", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v144", "h38.4" ] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [ "h-19.2", "v268.8" ] ],
+    [ "lcd1:VCC", "esp:5V", "red", [ "h-38.4", "v307.3" ] ],
+    [ "lcd1:SDA", "esp:21", "limegreen", [ "h-9.6", "v96.2", "h220.8", "v76.8" ] ],
+    [ "lcd1:SCL", "esp:22", "limegreen", [ "v77.1", "h182.4", "v57.6" ] ],
+    [ "led1:C", "esp:GND.3", "green", [ "v0" ] ],
+    [ "led1:A", "esp:19", "green", [ "v0" ] ],
+    [ "relay1:VCC", "esp:5V", "red", [ "h0" ] ],
+    [ "relay1:GND", "esp:GND.3", "blue", [ "h-48", "v-163.6" ] ],
+    [ "relay1:IN", "esp:13", "green", [ "h-144", "v-96.2" ] ]
+  ],
+  "dependencies": {}
+}
